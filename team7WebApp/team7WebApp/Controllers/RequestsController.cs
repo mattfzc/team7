@@ -10,6 +10,9 @@ namespace team7WebApp.Controllers
     public class RequestsController : Controller
     {
         private Team7DbContext _db = new Team7DbContext();
+        //public SelectList SelList;
+        public List<int> IdList;
+
         // GET: Requests
         public ActionResult Index()
         {
@@ -25,6 +28,28 @@ namespace team7WebApp.Controllers
         // GET: Requests/Create
         public ActionResult Create()
         {
+            var inquirerRole = _db.Role.FirstOrDefault(x => !x.CanTakeRequests && !x.CanAssign)?.ID;
+            if (inquirerRole == null)
+            {
+                throw new Exception();
+            }
+            IdList = _db.User.Where(x => x.RoleId == inquirerRole).Select(x => x.Id).ToList();
+
+
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            foreach(var v in IdList)
+            {
+                listItems.Add(new SelectListItem
+                {
+                    Text = v.ToString(),
+                    Value = v.ToString()
+                });
+            }
+           
+
+            ViewBag.InquirerIdList = listItems;
+            
+
             return View();
         }
 
