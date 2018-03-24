@@ -9,5 +9,6 @@ namespace team7WebApp.Models
     public class Team7DbContext :DbContext
     {
         DbSet<User> User { get; set; }
+        DbSet<Role> Role { get; set; }
     }
 }
