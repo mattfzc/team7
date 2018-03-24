@@ -71,15 +71,19 @@
 OUTGOING REQUESTS:<br />
 @foreach (var request in ViewBag.requests)
 {
+    <label>-------------------------------</label>
     <li>Request To: @request.ToDept</li>
     <li>Status: @request.Status</li>
+    <label>-------------------------------</label>
 }
 <br />
 INBOUND REQUESTS:<br />
 @foreach (var request in ViewBag.inbound)
 {
+    <label>-------------------------------</label>
     <li>Request From: @request.FromUser</li>
     <li>Status: @request.Status</li>
+    <label>-------------------------------</label>
 }
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
