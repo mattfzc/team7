@@ -160,7 +160,12 @@
     <Compile Include="Migrations\201803241301187_change1.Designer.cs">
       <DependentUpon>201803241301187_change1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803241334292_change2.cs" />
+    <Compile Include="Migrations\201803241334292_change2.Designer.cs">
+      <DependentUpon>201803241334292_change2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Team7DbContext.cs" />
     <Compile Include="Models\User.cs" />
@@ -226,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803241301187_change1.resx">
       <DependentUpon>201803241301187_change1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241334292_change2.resx">
+      <DependentUpon>201803241334292_change2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
