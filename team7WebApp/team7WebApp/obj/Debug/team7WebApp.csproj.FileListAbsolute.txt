@@ -291,3 +291,4 @@ C:\Users\arian\Source\Repos\team7\team7WebApp\team7WebApp\obj\Debug\team7WebApp.
 C:\Users\arian\Source\Repos\team7\team7WebApp\team7WebApp\obj\Debug\team7WebApp.dll
 C:\Users\arian\Source\Repos\team7\team7WebApp\team7WebApp\obj\Debug\team7WebApp.pdb
 C:\Users\arian\Source\Repos\team7\team7WebApp\team7WebApp\obj\Debug\team7WebApp.Migrations.change2.resources
+C:\Users\arian\Source\Repos\team7\team7WebApp\team7WebApp\obj\Debug\team7WebApp.Migrations.Change3.resources
