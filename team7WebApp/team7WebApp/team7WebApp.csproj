@@ -187,6 +187,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\collaboration-illustration-768x300.jpg" />
+    <Content Include="Images\Knowledge_Transfer_2.jpg" />
+    <Content Include="Images\Knowledge_Transfer_4.jpg" />
+    <Content Include="Images\kt logo.png" />
+    <Content Include="Images\kt1.jpg" />
+    <Content Include="Images\kt3.jpg" />
+    <Content Include="Images\KT_logo-02.png" />
+    <Content Include="Images\mentor-2062999_640.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
