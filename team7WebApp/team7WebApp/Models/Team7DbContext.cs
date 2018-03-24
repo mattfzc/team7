@@ -11,5 +11,6 @@ namespace team7WebApp.Models
         DbSet<User> User { get; set; }
         DbSet<Role> Role { get; set; }
         DbSet<Department> Department { get; set; }
+        DbSet<Request> Request { get; set; }
     }
 }
