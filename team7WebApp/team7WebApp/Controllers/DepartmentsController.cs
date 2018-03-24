@@ -19,7 +19,8 @@ namespace team7WebApp.Controllers
         // GET: Departments/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model = _db.Department.Find(id);
+            return View(model);
         }
 
         // GET: Departments/Create
@@ -81,7 +82,8 @@ namespace team7WebApp.Controllers
         // GET: Departments/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _db.Department.Find(id);
+            return View(model);
         }
 
         // POST: Departments/Delete/5
@@ -91,7 +93,12 @@ namespace team7WebApp.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                var model = _db.Department.Find(id);
+                if(model != null)
+                {
+                    _db.Department.Remove(model);
+                    _db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

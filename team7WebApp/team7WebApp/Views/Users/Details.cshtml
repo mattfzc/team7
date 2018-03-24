@@ -11,6 +11,12 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
@@ -59,7 +65,22 @@
         </dd>
 
     </dl>
+
 </div>
+<br />
+OUTGOING REQUESTS:<br />
+@foreach (var request in ViewBag.requests)
+{
+    <li>Request To: @request.ToDept</li>
+    <li>Status: @request.Status</li>
+}
+<br />
+INBOUND REQUESTS:<br />
+@foreach (var request in ViewBag.inbound)
+{
+    <li>Request From: @request.FromUser</li>
+    <li>Status: @request.Status</li>
+}
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

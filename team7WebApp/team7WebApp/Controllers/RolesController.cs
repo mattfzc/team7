@@ -19,7 +19,8 @@ namespace team7WebApp.Controllers
         // GET: Roles/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model = _db.Role.Find(id);
+            return View(model);
         }
 
         // GET: Roles/Create
@@ -84,7 +85,8 @@ namespace team7WebApp.Controllers
         // GET: Roles/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _db.Role.Find(id);
+            return View(model);
         }
 
         // POST: Roles/Delete/5
@@ -94,7 +96,12 @@ namespace team7WebApp.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                var model = _db.Role.Find(id);
+                if(model != null)
+                {
+                    _db.Role.Remove(model);
+                    _db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch
