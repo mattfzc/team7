@@ -16,9 +16,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.InquirerID, htmlAttributes: new { @class = "control-label col-md-2" })
+           @Html.LabelFor(model => model.InquirerID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.InquirerID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("Inqiurer", (List<SelectListItem>)ViewBag.InquirerIdList, new { @class = "control-label col-md-4" })
+                
                 @Html.ValidationMessageFor(model => model.InquirerID, "", new { @class = "text-danger" })
             </div>
         </div>
