@@ -43,9 +43,11 @@ namespace team7WebApp.Controllers
                 {
                     ID = nextId,
                     RoleName = Request.Form["RoleName"],
-                    CanAssign = Request.Form["CanAssign"] == "true" ? true : false,
-                    CanTakeRequests = Request.Form["CanTakeRequests"] == "true" ? true : false
+                    CanAssign = Request.Form["CanAssign"] == "true,false" ? true : false,
+                    CanTakeRequests = Request.Form["CanTakeRequests"] == "true,false" ? true : false
                 };
+                var testAssign = Request.Form["CanAssign"];
+                var testTake = Request.Form["CanTakeRequests"];
                 _db.Role.Add(newRole);
                 _db.SaveChanges();
 
