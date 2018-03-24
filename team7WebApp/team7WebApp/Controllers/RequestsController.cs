@@ -7,65 +7,66 @@ using team7WebApp.Models;
 
 namespace team7WebApp.Controllers
 {
-    public class RolesController : Controller
+    public class RequestsController : Controller
     {
         private Team7DbContext _db = new Team7DbContext();
-        // GET: Roles
+        // GET: Requests
         public ActionResult Index()
         {
-            return View(_db.Role.ToList());
+            return View(_db.Request.ToList());
         }
 
-        // GET: Roles/Details/5
+        // GET: Requests/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Roles/Create
+        // GET: Requests/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Roles/Create
+        // POST: Requests/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
                 int nextId = 0;
-                if (_db.Role.ToList().Count > 0)
+                if (_db.Request.ToList().Count > 0)
                 {
-                    nextId = _db.Role.Max(x => x.ID) + 1;
+                    nextId = _db.Request.Max(x => x.RequestID) + 1;
                 }
-                Role newRole = new Role
+                // TODO: Add insert logic here
+                Request newRequest = new Request
                 {
-                    ID = nextId,
-                    RoleName = Request.Form["RoleName"],
-                    CanAssign = Request.Form["CanAssign"] == "true,false" ? true : false,
-                    CanTakeRequests = Request.Form["CanTakeRequests"] == "true,false" ? true : false
+                    RequestID = nextId,
+                    InquirerID = Convert.ToInt32(Request.Form["InquirerID"]),
+                    DeptID = Convert.ToInt32(Request.Form["DeptID"]),
+                    LiasonID = Convert.ToInt32(Request.Form["LiasonID"]),
+                    MeetTime = DateTime.Now,
+                    HasInquiererAccepted = false
                 };
-                var testAssign = Request.Form["CanAssign"];
-                var testTake = Request.Form["CanTakeRequests"];
-                _db.Role.Add(newRole);
+                _db.Request.Add(newRequest);
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch
             {
                 return View();
             }
         }
 
-        // GET: Roles/Edit/5
+        // GET: Requests/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Roles/Edit/5
+        // POST: Requests/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -81,13 +82,13 @@ namespace team7WebApp.Controllers
             }
         }
 
-        // GET: Roles/Delete/5
+        // GET: Requests/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Roles/Delete/5
+        // POST: Requests/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
