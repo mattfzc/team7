@@ -10,6 +10,12 @@ namespace team7WebApp.Controllers
     public class UsersController : Controller
     {
         private Team7DbContext _db = new Team7DbContext();
+        public class RequestDto
+        {
+            public string ToDept;
+            public string Status;
+            public string FromUser;
+        }
         // GET: Users
         public ActionResult Index()
         {
@@ -19,7 +25,38 @@ namespace team7WebApp.Controllers
         // GET: Users/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model = _db.User.Find(id);
+            var outgoing = _db.Request.Where(x => x.InquirerID == id).ToList();
+            List<RequestDto> list1 = new List<RequestDto>();
+            foreach(var req in outgoing)
+            {
+                var dept = _db.Department.Find(req.DeptID);
+                if (dept == null)
+                {
+                    list1.Add(new RequestDto { ToDept = "???", Status = "(Please add Department)" });
+                }
+                else
+                {
+                    list1.Add(new RequestDto { ToDept = dept.DeptName, FromUser = model.FirstName + model.LastName, Status = "SENT" });
+                }
+            }
+            ViewBag.requests = list1;
+            var incoming = _db.Request.Where(x => x.DeptID == model.DepartmentId);
+            var list2 = new List<RequestDto>();
+            foreach(var req in incoming)
+            {
+                var user = _db.User.Find(req.InquirerID);
+                if (user == null)
+                {
+                    list2.Add(new RequestDto { FromUser = "???", Status = "READY FOR RESPONSE" });
+                }
+                else
+                {
+                    list2.Add(new RequestDto { FromUser = user.FirstName + user.LastName, Status = "READY FOR RESPONSE" });
+                }
+            }
+            ViewBag.inbound = list2;
+            return View(model);
         }
 
         // GET: Users/Create
@@ -86,7 +123,8 @@ namespace team7WebApp.Controllers
         // GET: Users/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _db.User.Find(id);
+            return View(model);
         }
 
         // POST: Users/Delete/5
@@ -95,6 +133,13 @@ namespace team7WebApp.Controllers
         {
             try
             {
+                var model = _db.User.Find(id);
+                if (model != null)
+                {
+                    _db.User.Remove(model);
+                    _db.SaveChanges();
+                }
+
                 // TODO: Add delete logic here
 
                 return RedirectToAction("Index");

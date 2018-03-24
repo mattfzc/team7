@@ -19,7 +19,8 @@ namespace team7WebApp.Controllers
         // GET: Requests/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model = _db.Request.Find(id);
+            return View(model);
         }
 
         // GET: Requests/Create
@@ -45,7 +46,7 @@ namespace team7WebApp.Controllers
                     RequestID = nextId,
                     InquirerID = Convert.ToInt32(Request.Form["InquirerID"]),
                     DeptID = Convert.ToInt32(Request.Form["DeptID"]),
-                    LiasonID = Convert.ToInt32(Request.Form["LiasonID"]),
+                    LiasonID = -1,
                     MeetTime = DateTime.Now,
                     HasInquiererAccepted = false
                 };
@@ -85,7 +86,8 @@ namespace team7WebApp.Controllers
         // GET: Requests/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var model = _db.Request.Find(id);
+            return View(model);
         }
 
         // POST: Requests/Delete/5
@@ -95,7 +97,12 @@ namespace team7WebApp.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                var model = _db.Request.Find(id);
+                if(model != null)
+                {
+                    _db.Request.Remove(model);
+                    _db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

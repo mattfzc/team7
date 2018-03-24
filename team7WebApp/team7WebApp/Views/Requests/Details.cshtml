@@ -1,0 +1,56 @@
+﻿@model team7WebApp.Models.Request
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Request</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RequestID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InquirerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InquirerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeptID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeptID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeetTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeetTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasInquiererAccepted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasInquiererAccepted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RequestID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
